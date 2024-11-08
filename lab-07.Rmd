@@ -96,7 +96,7 @@ A value of R^2 really close to zero, indicating only a small portion of data can
 score_bty_aug <- augment(score_bty_fit$fit)
 
 ggplot(data = score_bty_aug, aes(x = .fitted, y = .resid)) + 
-  geom_jitter(alpha = 0.5)+
+  geom_jitter(color = "lightblue")+
   geom_hline(yintercept = 0)
   
 ```
@@ -106,7 +106,8 @@ ggplot(data = score_bty_aug, aes(x = .fitted, y = .resid)) +
 0. Look at the variable rank, and determine the frequency of each category level.
 
 ```{r}
-# ... 
+evals%>%
+  count(rank)
 ```
 
 1. Fit a new linear model called `score_rank_fit` to predict average professor evaluation `score` based on `rank` of the professor.
